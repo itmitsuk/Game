@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <Canvas Name="myCanvas" Focusable="True" KeyDown="keyisdown" KeyUp="keyisup">
+            <Image x:Name="background" Height="480" Source="background.jpg" Stretch="Fill" Canvas.Top="-51" Width="2000" Canvas.Left="-10"/>
+            <Image x:Name="coin" Source="coin.gif" Stretch="Fill" Height="90" Canvas.Left="398" Canvas.Top="97" Width="87"/>
+            <Image x:Name="player" Margin="235,272,306.42,87" Source="player.jpg" Stretch="Fill" KeyUp="keyisup" KeyDown="keyisdown"/>
+            <Image x:Name="platform" Height="62" Canvas.Left="170" Source="platform.jpg" Stretch="Fill" Canvas.Top="153" Width="127"/>
+            <Image x:Name="key" Height="47" Canvas.Left="564" Source="key.jpg" Stretch="Fill" Canvas.Top="129" Width="90"/>
+            <Image x:Name="door" Height="90" Canvas.Left="105" Source="door-closed.gif" Stretch="Fill" Canvas.Top="97" Width="60"/>
+
+
+
+        </Canvas>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="574,-27,0,0" VerticalAlignment="Top" Width="100"/>
+
+    </Grid>
+</Window>
