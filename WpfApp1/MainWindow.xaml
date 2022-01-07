@@ -12,18 +12,26 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <Canvas Name="myCanvas" Focusable="True" KeyDown="keyisdown" KeyUp="keyisup">
-            <Image x:Name="background" Height="480" Source="background.jpg" Stretch="Fill" Canvas.Top="-51" Width="2000" Canvas.Left="-10"/>
-            <Image x:Name="coin" Source="coin.gif" Stretch="Fill" Height="90" Canvas.Left="398" Canvas.Top="97" Width="87"/>
-            <Image x:Name="player" Margin="235,272,306.42,87" Source="player.jpg" Stretch="Fill" KeyUp="keyisup" KeyDown="keyisdown"/>
-            <Image x:Name="platform" Height="62" Canvas.Left="170" Source="platform.jpg" Stretch="Fill" Canvas.Top="153" Width="127"/>
-            <Image x:Name="key" Height="47" Canvas.Left="564" Source="key.jpg" Stretch="Fill" Canvas.Top="129" Width="90"/>
-            <Image x:Name="door" Height="90" Canvas.Left="105" Source="door-closed.gif" Stretch="Fill" Canvas.Top="97" Width="60"/>
+        <Canvas Name="myCanvas" Focusable="True" KeyUp="KeyIsUp" KeyDown="KeyIsDown" >
+            <Image Name="background" Height="480" Source="background.jpg" Stretch="Fill" Width="2000"/>
+            
+            <Image Tag="coin" Source="coin.gif" Stretch="Fill" Height="41" Canvas.Left="309" Canvas.Top="286" Width="35"/>
+            
+            <Image Name="player" Source="player.jpg" Stretch="Fill" Canvas.Left="129" Canvas.Top="266" Height="70" Width="60"/>
 
-
-
+            <Image Name="key" Height="47" Canvas.Left="564" Source="key.jpg" Stretch="Fill" Canvas.Top="129" Width="90"/>
+            
+            <Image Name="door" Height="90" Canvas.Left="105" Source="door-closed.gif" Stretch="Fill" Canvas.Top="97" Width="60"/>
+            
+            <Label Name="txtScore" FontSize="22" FontWeight="ExtraBold" Content="Coins: 0"/>
+            
+            <Image Tag="platform" Height="62" Source="platform.jpg" Stretch="Fill" Canvas.Top="372" Width="127"/>
+            <Image Tag="platform" Height="62" Canvas.Left="127" Source="platform.jpg" Stretch="Fill" Canvas.Top="372" Width="182"/>
+            <Image Tag="platform" Height="62" Canvas.Left="309" Source="platform.jpg" Stretch="Fill" Canvas.Top="372" Width="182"/>
+            <Image Tag="platform" Height="62" Canvas.Left="472" Source="platform.jpg" Stretch="Fill" Canvas.Top="286" Width="182"/>
+            <Image Tag="platform" Height="62" Canvas.Left="45" Source="platform.jpg" Stretch="Fill" Canvas.Top="192" Width="280"/>
+            <Image Tag="platform" Height="62" Canvas.Left="629" Source="platform.jpg" Stretch="Fill" Canvas.Top="176" Width="182"/>
         </Canvas>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="574,-27,0,0" VerticalAlignment="Top" Width="100"/>
 
     </Grid>
 </Window>

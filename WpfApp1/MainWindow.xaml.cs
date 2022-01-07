@@ -19,8 +19,8 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
-        bool goleft = false; // boolean which will control players going left
-        bool goright = false; // boolean which will control players going right
+        bool goLeft = false; // boolean which will control players going left
+        bool goRight = false; // boolean which will control players going right
         bool jumping = false; // boolean to check if player is jumping or not
         bool hasKey = false; // default value of whether the player has the key
 
@@ -39,19 +39,14 @@ namespace WpfApp1
 
             myCanvas.Focus();
 
-            gameTimer.Tick += mainGameTimer;
+            gameTimer.Tick += MainGameTimer;
             gameTimer.Interval = TimeSpan.FromMilliseconds(20);
             gameTimer.Start();
         }
 
 
-        private void mainGameTimer(object sender, EventArgs e)
+        private void MainGameTimer(object sender, EventArgs e)
         {
-            // linking the jumpspeed integer with the player picture boxes to location
-            Canvas.SetLeft(player, Canvas.GetLeft(player) + jumpSpeed);
-
-            // refresh the player picture box consistently
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!player.Refresh();
 
             // if jumping is true and force is less than 0
             // then change jumping to false
@@ -76,7 +71,7 @@ namespace WpfApp1
 
             // if go left is true and players left is greater than 100 pixels
             // only then move player towards left of the 
-            if (goleft && Canvas.GetLeft(player) > 100)
+            if (goLeft && Canvas.GetLeft(player) > 50)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) - playSpeed);
             }
@@ -86,7 +81,7 @@ namespace WpfApp1
             // if go right Boolean is true
             // player left plus players width plus 100 is less than the forms width
             // then we move the player towards the right by adding to the players left
-            if (goright && Canvas.GetLeft(player) + (player.Width + 100) < Application.Current.MainWindow.Width)
+            if (goRight /*&& Canvas.GetLeft(player) + (player.Width + 50) < Application.Current.MainWindow.Width*/)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) + playSpeed);
 
@@ -96,17 +91,17 @@ namespace WpfApp1
 
             // if go right is true and the background picture left is greater 1352
             // then we move the background picture towards the left
-            if (goright &&  Canvas.GetLeft(background) > -1353)        /*backgroud.left*/
+            if (goRight && Canvas.GetLeft(background) > -1353)        /*backgroud.left*/
             {
-                Canvas.SetLeft(background, Canvas.GetLeft(background) - backLeft); 
+                Canvas.SetLeft(background, Canvas.GetLeft(background) - backLeft);
 
                 // the for loop below is checking to see the platforms and coins in the level
                 // when they are found it will move them towards the left
                 foreach (Image x in myCanvas.Children.OfType<Image>())
                 {
-                    if (x is Image && x.Name == "platform" || x is Image && x.Name == "coin" || x is Image && x.Name == "door" || x is Image && x.Name == "key")
+                    if ((string)x.Tag == "platform" || (string)x.Tag == "coin" || (string)x.Tag == "door" ||(string)x.Tag == "key")
                     {
-                        Canvas.SetLeft(x, - backLeft);
+                        Canvas.SetLeft(x, -backLeft);
                     }
                 }
 
@@ -114,7 +109,7 @@ namespace WpfApp1
 
             // if go left is true and the background pictures left is less than 2
             // then we move the background picture towards the right
-            if (goleft && Canvas.GetLeft(background) < 2)
+            if (goLeft && Canvas.GetLeft(background) < 2)
             {
                 Canvas.SetLeft(background, Canvas.GetLeft(background) + backLeft);
 
@@ -123,21 +118,41 @@ namespace WpfApp1
                 //foreach (Control x in this.Controls)
                 foreach (var x in myCanvas.Children.OfType<Image>())
                 {
-                    if (x is Image && x.Name == "platform" || x is Image && x.Name == "coin" || x is Image && x.Name == "door" || x is Image && x.Name == "key")
+                    if ((string)x.Tag == "platform" || (string)x.Tag == "coin" || (string)x.Tag == "door" || (string)x.Tag == "key")
                     {
-                        Canvas.SetLeft(x, + backLeft);
+                        Canvas.SetLeft(x, +backLeft);
                     }
                 }
             }
 
             Rect playerHitBox = new Rect(Canvas.GetLeft(player), Canvas.GetTop(player), player.Width, player.Height);
 
-            // below if the for loop thats checking for all of the controls in this form
-            foreach (var x in myCanvas.Children.OfType<Rectangle>())
+            var children = myCanvas.Children.OfType<Image>().ToList();
+
+            foreach (var k in children)
             {
+                // if the picture box found has a tag of coin
+                if ((string)k.Tag == "coin")
+                {
+                    Rect coinHitBox = new Rect(Canvas.GetLeft(k), Canvas.GetTop(k), k.Width, k.Height);
+
+                    // now if the player collides with the coin picture box
+                    if (playerHitBox.IntersectsWith(coinHitBox))
+                    {
+                        myCanvas.Children.Remove(k); // then we are going to remove the coin image
+                        score++; // add 1 to the score
+                        txtScore.Content = "Coins: " + score;
+                    }
+                }
+            }
+
+            // below if the for loop thats checking for all of the controls in this form
+            foreach (var x in myCanvas.Children.OfType<Image>())
+            {
+                
 
                 // is X is a picture box and it has a tag of platform
-                if (x.Name == "platform")
+                if ((string)x.Tag == "platform")
                 {
                     Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
@@ -151,19 +166,10 @@ namespace WpfApp1
                         jumpSpeed = 0; // set the jump speed to 0
                     }
                 }
-                // if the picture box found has a tag of coin
-                if (x.Name == "coin")
-                {
-                    Rect coinHitBox = new Rect(Canvas.GetLeft(coin), Canvas.GetTop(coin), coin.Width, coin.Height);
-
-                    // now if the player collides with the coin picture box
-                    if (playerHitBox.IntersectsWith(coinHitBox))
-                    {
-                        myCanvas.Children.Remove(x); // then we are going to remove the coin image
-                        score++; // add 1 to the score
-                    }
-                }
             }
+
+
+
 
             // if the player collides with the door and has key boolean is true
             Rect doorHitBox = new Rect(Canvas.GetLeft(door), Canvas.GetTop(door), door.Width, door.Height);
@@ -198,20 +204,20 @@ namespace WpfApp1
             }
         }
 
-        private void keyisdown(object sender, KeyEventArgs e)
+        private void KeyIsDown(object sender, KeyEventArgs e)
         {
             //if the player pressed the left key AND the player is inside the panel
             // then we set the car left boolean to true
             if (e.Key == Key.A)
             {
-                goleft = true;
+                goLeft = true;
             }
             // if player pressed the right key and the player left plus player width is less then the panel1 width          
 
             if (e.Key == Key.D)
             {
                 // then we set the player right to true
-                goright = true;
+                goRight = true;
             }
 
             //if the player pressed the space key and jumping boolean is false
@@ -223,17 +229,17 @@ namespace WpfApp1
             }
         }
 
-        private void keyisup(object sender, KeyEventArgs e)
+        private void KeyIsUp(object sender, KeyEventArgs e)
         {
             // if the LEFT key is up we set the car left to false
             if (e.Key == Key.A)
             {
-                goleft = false;
+                goLeft = false;
             }
             // if the RIGHT key is up we set the car right to false
             if (e.Key == Key.D)
             {
-                goright = false;
+                goRight = false;
             }
             //when the keys are released we check if jumping is true
             // if so we need to set it back to false so the player can jump again
