@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace WpfApp1
@@ -28,8 +19,7 @@ namespace WpfApp1
         int force = 8; // force of the jump in an integer
         int score = 0; // default score integer set to 0
 
-        int playSpeed = 18; //this integer will set players speed to 18
-        int backLeft = 8; // this integer will set the background moving speed to 8
+        int playerSpeed = 18; //this integer will set players speed to 18
 
         DispatcherTimer gameTimer = new DispatcherTimer();
 
@@ -47,6 +37,7 @@ namespace WpfApp1
 
         private void MainGameTimer(object sender, EventArgs e)
         {
+            Canvas.SetTop(player, Canvas.GetTop(player) + jumpSpeed);
 
             // if jumping is true and force is less than 0
             // then change jumping to false
@@ -71,9 +62,9 @@ namespace WpfApp1
 
             // if go left is true and players left is greater than 100 pixels
             // only then move player towards left of the 
-            if (goLeft && Canvas.GetLeft(player) > 50)
+            if (goLeft && Canvas.GetLeft(player) > 30)
             {
-                Canvas.SetLeft(player, Canvas.GetLeft(player) - playSpeed);
+                Canvas.SetLeft(player, Canvas.GetLeft(player) - playerSpeed);
             }
             // by doing the if statement above, the player picture will stop on the forms left
 
@@ -81,49 +72,13 @@ namespace WpfApp1
             // if go right Boolean is true
             // player left plus players width plus 100 is less than the forms width
             // then we move the player towards the right by adding to the players left
-            if (goRight /*&& Canvas.GetLeft(player) + (player.Width + 50) < Application.Current.MainWindow.Width*/)
+            if (goRight && Canvas.GetLeft(player) + (player.Width + 30) < Application.Current.MainWindow.Width)
             {
-                Canvas.SetLeft(player, Canvas.GetLeft(player) + playSpeed);
+                Canvas.SetLeft(player, Canvas.GetLeft(player) + playerSpeed);
 
             }
             // by doing the if statement above, the player picture will stop on the forms right
 
-
-            // if go right is true and the background picture left is greater 1352
-            // then we move the background picture towards the left
-            if (goRight && Canvas.GetLeft(background) > -1353)        /*backgroud.left*/
-            {
-                Canvas.SetLeft(background, Canvas.GetLeft(background) - backLeft);
-
-                // the for loop below is checking to see the platforms and coins in the level
-                // when they are found it will move them towards the left
-                foreach (Image x in myCanvas.Children.OfType<Image>())
-                {
-                    if ((string)x.Tag == "platform" || (string)x.Tag == "coin" || (string)x.Tag == "door" ||(string)x.Tag == "key")
-                    {
-                        Canvas.SetLeft(x, -backLeft);
-                    }
-                }
-
-            }
-
-            // if go left is true and the background pictures left is less than 2
-            // then we move the background picture towards the right
-            if (goLeft && Canvas.GetLeft(background) < 2)
-            {
-                Canvas.SetLeft(background, Canvas.GetLeft(background) + backLeft);
-
-                // below the is the for loop thats checking to see the platforms and coins in the level
-                // when they are found in the level it will move them all towards the right with the background
-                //foreach (Control x in this.Controls)
-                foreach (var x in myCanvas.Children.OfType<Image>())
-                {
-                    if ((string)x.Tag == "platform" || (string)x.Tag == "coin" || (string)x.Tag == "door" || (string)x.Tag == "key")
-                    {
-                        Canvas.SetLeft(x, +backLeft);
-                    }
-                }
-            }
 
             Rect playerHitBox = new Rect(Canvas.GetLeft(player), Canvas.GetTop(player), player.Width, player.Height);
 
@@ -168,7 +123,9 @@ namespace WpfApp1
                 }
             }
 
-
+            var bgleft = Canvas.GetLeft(background);
+            var plleft = Canvas.GetLeft(player);
+            txtScore1.Content = "bgleft: " + plleft;
 
 
             // if the player collides with the door and has key boolean is true

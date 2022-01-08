@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -13,24 +13,26 @@
         </Grid.ColumnDefinitions>
 
         <Canvas Name="myCanvas" Focusable="True" KeyUp="KeyIsUp" KeyDown="KeyIsDown" >
-            <Image Name="background" Height="480" Source="background.jpg" Stretch="Fill" Width="2000"/>
-            
-            <Image Tag="coin" Source="coin.gif" Stretch="Fill" Height="41" Canvas.Left="309" Canvas.Top="286" Width="35"/>
-            
-            <Image Name="player" Source="player.jpg" Stretch="Fill" Canvas.Left="129" Canvas.Top="266" Height="70" Width="60"/>
+            <Image Name="background" Height="689" Source="background.jpg" Stretch="Fill" Width="2000" Focusable="True"/>
 
-            <Image Name="key" Height="47" Canvas.Left="564" Source="key.jpg" Stretch="Fill" Canvas.Top="129" Width="90"/>
-            
-            <Image Name="door" Height="90" Canvas.Left="105" Source="door-closed.gif" Stretch="Fill" Canvas.Top="97" Width="60"/>
-            
+            <Image Tag="coin" Source="coin.gif" Stretch="Fill" Height="41" Canvas.Left="243" Canvas.Top="591" Width="35"/>
+
+            <Image Name="player" Source="player.jpg" Stretch="Fill" Canvas.Left="115" Canvas.Top="454" Height="70" Width="60" Focusable="True"/>
+
+            <Image Name="key" Height="47" Canvas.Left="704" Source="key.jpg" Stretch="Fill" Canvas.Top="345" Width="90"/>
+
+            <Image Name="door" Height="90" Canvas.Left="115" Source="door-closed.gif" Stretch="Fill" Canvas.Top="278" Width="60"/>
+
             <Label Name="txtScore" FontSize="22" FontWeight="ExtraBold" Content="Coins: 0"/>
-            
-            <Image Tag="platform" Height="62" Source="platform.jpg" Stretch="Fill" Canvas.Top="372" Width="127"/>
-            <Image Tag="platform" Height="62" Canvas.Left="127" Source="platform.jpg" Stretch="Fill" Canvas.Top="372" Width="182"/>
-            <Image Tag="platform" Height="62" Canvas.Left="309" Source="platform.jpg" Stretch="Fill" Canvas.Top="372" Width="182"/>
-            <Image Tag="platform" Height="62" Canvas.Left="472" Source="platform.jpg" Stretch="Fill" Canvas.Top="286" Width="182"/>
-            <Image Tag="platform" Height="62" Canvas.Left="45" Source="platform.jpg" Stretch="Fill" Canvas.Top="192" Width="280"/>
-            <Image Tag="platform" Height="62" Canvas.Left="629" Source="platform.jpg" Stretch="Fill" Canvas.Top="176" Width="182"/>
+            <Label Name="txtScore1" FontSize="22" FontWeight="ExtraBold" Content="bgleft: -" Canvas.Left="290"/>
+
+            <Image Tag="platform" Height="62" Source="platform.jpg" Stretch="Fill" Canvas.Top="637" Width="144"/>
+            <Image Tag="platform" Height="62" Canvas.Left="127" Source="platform.jpg" Stretch="Fill" Canvas.Top="637" Width="182"/>
+            <Image Tag="platform" Height="62" Canvas.Left="309" Source="platform.jpg" Stretch="Fill" Canvas.Top="637" Width="182"/>
+            <Image Tag="platform" Height="62" Canvas.Left="433" Source="platform.jpg" Stretch="Fill" Canvas.Top="527" Width="182"/>
+            <Image Tag="platform" Height="62" Canvas.Left="29" Source="platform.jpg" Stretch="Fill" Canvas.Top="373" Width="280"/>
+            <Image Tag="platform" Height="62" Canvas.Left="656" Source="platform.jpg" Stretch="Fill" Canvas.Top="397" Width="182"/>
+            <Image Tag="coin" Source="coin.gif" Stretch="Fill" Height="41" Canvas.Left="290" Canvas.Top="591" Width="35"/>
         </Canvas>
 
     </Grid>
