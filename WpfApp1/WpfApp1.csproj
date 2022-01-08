@@ -50,6 +50,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -86,7 +89,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,22 +101,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="coin.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="player.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="platform.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="key.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="door-closed.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\coin.gif" />
@@ -130,6 +120,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\key.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="key.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="coin.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="door.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="platform.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="spreadsheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="background.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

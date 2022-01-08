@@ -18,6 +18,7 @@ namespace WpfApp1
         int jumpSpeed = 10; // integer to set jump speed
         int force = 8; // force of the jump in an integer
         int score = 0; // default score integer set to 0
+        int keys = 0; // default keys integer set to 0
 
         int playerSpeed = 18; //this integer will set players speed to 18
 
@@ -96,7 +97,7 @@ namespace WpfApp1
                     {
                         myCanvas.Children.Remove(k); // then we are going to remove the coin image
                         score++; // add 1 to the score
-                        txtScore.Content = "Coins: " + score;
+                        txtScore.Content = "Монеты: " + score;
                     }
                 }
             }
@@ -123,11 +124,6 @@ namespace WpfApp1
                 }
             }
 
-            var bgleft = Canvas.GetLeft(background);
-            var plleft = Canvas.GetLeft(player);
-            txtScore1.Content = "bgleft: " + plleft;
-
-
             // if the player collides with the door and has key boolean is true
             Rect doorHitBox = new Rect(Canvas.GetLeft(door), Canvas.GetTop(door), door.Width, door.Height);
 
@@ -147,6 +143,8 @@ namespace WpfApp1
             {
                 // then we remove the key from the game
                 myCanvas.Children.Remove(key);
+                keys = 1;
+                txtKey.Content = "Ключи: " + keys;
                 // change the has key boolean to true
                 hasKey = true;
             }
