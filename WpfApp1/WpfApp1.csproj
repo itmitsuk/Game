@@ -101,16 +101,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="player.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\coin.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\platform.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\player.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\door-closed.gif" />
@@ -131,13 +125,22 @@
     <Resource Include="door.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="platform.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="spreadsheet.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="background.gif" />
+    <Resource Include="Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="platform1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="platform2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="tree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="danger.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
