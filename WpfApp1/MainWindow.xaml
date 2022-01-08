@@ -14,14 +14,14 @@
         </Grid.ColumnDefinitions>
 
         <Canvas Name="myCanvas" Focusable="True" KeyUp="KeyIsUp" KeyDown="KeyIsDown" >
-            <Image Name="background" Source="Background.png" Stretch="Fill" Grid.ColumnSpan="2" Height="689" Width="1272"/>
+            <Image Name="background" Source="Background.png" Stretch="Fill" Grid.ColumnSpan="2" Height="689" Width="1272" Canvas.Left="-1" Canvas.Top="-4"/>
 
 
 
-            <Image Height="53" Canvas.Left="180" Source="spreadsheet.png" Stretch="Fill" Width="147" Canvas.Top="10"/>
-            <Image Height="53" Canvas.Left="13" Source="spreadsheet.png" Stretch="Fill" Width="162" Canvas.Top="10"/>
-            <Label Name="txtScore" FontSize="22" FontFamily="Comic Sans MS" FontWeight="Bold" Content="Монеты: 0" Canvas.Left="26" Canvas.Top="14"/>
-            <Label Name="txtKey" FontSize="22" FontFamily="Comic Sans MS" FontWeight="Bold" Content="Ключи: 0" Canvas.Left="199" Canvas.Top="14"/>
+            <Image Height="53" Canvas.Left="207" Source="spreadsheet.png" Stretch="Fill" Width="147" Canvas.Top="20"/>
+            <Image Height="53" Canvas.Left="40" Source="spreadsheet.png" Stretch="Fill" Width="162" Canvas.Top="20"/>
+            <Label Name="txtScore" FontSize="22" FontFamily="Comic Sans MS" FontWeight="Bold" Content="Монеты: 0" Canvas.Left="53" Canvas.Top="24"/>
+            <Label Name="txtKey" FontSize="22" FontFamily="Comic Sans MS" FontWeight="Bold" Content="Ключи: 0" Canvas.Left="226" Canvas.Top="24"/>
 
 
 
