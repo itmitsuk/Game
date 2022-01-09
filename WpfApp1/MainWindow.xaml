@@ -75,6 +75,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
+            <Image Name="player" Height="62" Canvas.Left="18" gif:ImageBehavior.AnimatedSource="player.gif" Stretch="Fill" Canvas.Top="544" Width="44"/>
 
         </Canvas>
 

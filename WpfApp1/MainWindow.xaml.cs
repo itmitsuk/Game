@@ -9,18 +9,18 @@ namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
-
         bool goLeft = false; // boolean which will control players going left
         bool goRight = false; // boolean which will control players going right
         bool jumping = false; // boolean to check if player is jumping or not
         bool hasKey = false; // default value of whether the player has the key
+        bool fall = false;
 
         int jumpSpeed = 10; // integer to set jump speed
         int force = 8; // force of the jump in an integer
         int score = 0; // default score integer set to 0
         int keys = 0; // default keys integer set to 0
 
-        int playerSpeed = 18; //this integer will set players speed to 18
+        int playerSpeed = 11; //this integer will set players speed to 18
 
         DispatcherTimer gameTimer = new DispatcherTimer();
 
@@ -63,7 +63,7 @@ namespace WpfApp1
 
             // if go left is true and players left is greater than 100 pixels
             // only then move player towards left of the 
-            if (goLeft && Canvas.GetLeft(player) > 30)
+            if (goLeft && Canvas.GetLeft(player) > 25)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) - playerSpeed);
             }
@@ -73,7 +73,7 @@ namespace WpfApp1
             // if go right Boolean is true
             // player left plus players width plus 100 is less than the forms width
             // then we move the player towards the right by adding to the players left
-            if (goRight && Canvas.GetLeft(player) + (player.Width + 30) < Application.Current.MainWindow.Width)
+            if (goRight && Canvas.GetLeft(player) + (player.Width + 25) < Application.Current.MainWindow.Width)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) + playerSpeed);
 
@@ -85,7 +85,7 @@ namespace WpfApp1
 
             var children = myCanvas.Children.OfType<Image>().ToList();
 
-            foreach (var k in children)
+            foreach (Image k in children)
             {
                 // if the picture box found has a tag of coin
                 if ((string)k.Tag == "coin")
@@ -103,7 +103,7 @@ namespace WpfApp1
             }
 
             // below if the for loop thats checking for all of the controls in this form
-            foreach (var x in myCanvas.Children.OfType<Image>())
+            foreach (Image x in myCanvas.Children.OfType<Image>())
             {
                 
 
@@ -117,9 +117,18 @@ namespace WpfApp1
                     if (playerHitBox.IntersectsWith(platformHitBox) && !jumping)
                     {
                         // then we do the following
-                        force = 8; // set the force to 8
+                        force = 2; // set the force to 8
                         Canvas.SetTop(player, Canvas.GetTop(x) - player.Height); // also we place the player on top of the picture box
                         jumpSpeed = 0; // set the jump speed to 0
+                    }
+
+                    if (playerHitBox.IntersectsWith(platformHitBox) == false)
+                    {
+                        fall = true;
+                    }
+                    else
+                    {
+                        fall = false;
                     }
                 }
             }
@@ -133,7 +142,7 @@ namespace WpfApp1
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!door.Image = Properties.Resources.door_open;
                 // and we stop the timer
                 gameTimer.Stop();
-                MessageBox.Show("You Completed the level!!"); // show the message box
+                MessageBox.Show("Уровень пройден!"); // show the message box
             }
 
             // if the player collides with the key picture box
@@ -155,7 +164,7 @@ namespace WpfApp1
             if (Canvas.GetTop(player) + player.Height > Application.Current.MainWindow.Height + 60)
             {
                 gameTimer.Stop(); // stop the timer
-                MessageBox.Show("You Died!!!"); // show the message box
+                MessageBox.Show("Игра закончена!"); // show the message box
             }
         }
 
@@ -176,8 +185,7 @@ namespace WpfApp1
             }
 
             //if the player pressed the space key and jumping boolean is false
-
-            if (e.Key == Key.Space && !jumping)
+            if (e.Key == Key.Space && !jumping && fall)
             {
                 // then we set jumping to true
                 jumping = true;
