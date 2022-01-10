@@ -25,7 +25,7 @@
 
 
 
-            <Image Name="key" Height="47" Canvas.Left="1213" gif:ImageBehavior.AnimatedSource="key.gif" Stretch="Fill" Canvas.Top="256" Width="49"/>
+            <Image Name="key" Height="47" Canvas.Left="1063" gif:ImageBehavior.AnimatedSource="key.gif" Stretch="Fill" Canvas.Top="269" Width="49"/>
 
             <Image Tag ="coin" Height="56" Canvas.Left="242" gif:ImageBehavior.AnimatedSource="coin.gif" Stretch="Fill" Canvas.Top="610" Width="72"/>
             <Image Tag ="coin" Height="56" Canvas.Left="270" gif:ImageBehavior.AnimatedSource="coin.gif" Stretch="Fill" Canvas.Top="610" Width="72"/>
@@ -42,28 +42,28 @@
             <Image Tag="platform" Canvas.Left="630" Source="platform2.png" Canvas.Top="553" Width="82" Stretch="Fill" Height="32"/>
             <Image Tag="platform" Height="32" Canvas.Left="285" Source="platform1.png" Stretch="Fill" Canvas.Top="488" Width="79"/>
             <Image Tag="platform" Canvas.Left="364" Source="platform2.png" Canvas.Top="488" Width="83" Stretch="Fill" Height="32"/>
-            <Image Tag="platform" Height="32" Canvas.Left="528" Source="platform1.png" Stretch="Fill" Canvas.Top="402" Width="79"/>
-            <Image Tag="platform" Canvas.Left="607" Source="platform2.png" Canvas.Top="402" Width="83" Stretch="Fill" Height="32"/>
+            <Image Tag="platform" Height="32" Canvas.Left="561" Source="platform1.png" Stretch="Fill" Canvas.Top="402" Width="79"/>
+            <Image Tag="platform" Canvas.Left="640" Source="platform2.png" Canvas.Top="402" Width="83" Stretch="Fill" Height="32"/>
             <Image Tag="platform" Height="32" Canvas.Left="308" Source="platform1.png" Stretch="Fill" Canvas.Top="325" Width="78"/>
             <Image Tag="platform" Canvas.Left="386" Source="platform2.png" Canvas.Top="325" Width="84" Stretch="Fill" Height="32"/>
             <Image Tag="platform" Height="32" Canvas.Left="36" Source="platform1.png" Stretch="Fill" Canvas.Top="372" Width="78"/>
             <Image Tag="platform" Canvas.Left="114" Source="platform2.png" Canvas.Top="372" Width="84" Stretch="Fill" Height="32"/>
 
             <Image Name ="door" Height="135" Source="door.png" Stretch="Fill" Canvas.Top="269" Width="127" Canvas.Left="49"/>
-            <Image Tag="platform" Height="32" Canvas.Left="1178" Source="platform1.png" Stretch="Fill" Canvas.Top="308" Width="78"/>
-            <Image Tag="platform" Canvas.Left="1256" Source="platform2.png" Canvas.Top="308" Width="84" Stretch="Fill" Height="32"/>
+            <Image Tag="platform" Height="32" Canvas.Left="1005" Source="platform1.png" Stretch="Fill" Canvas.Top="325" Width="78"/>
+            <Image Tag="platform" Canvas.Left="1070" Source="platform2.png" Canvas.Top="325" Width="84" Stretch="Fill" Height="32"/>
             <Image Tag="platform" Height="32" Canvas.Left="836" Source="platform1.png" Stretch="Fill" Canvas.Top="657" Width="78"/>
             <Image Tag="platform" Canvas.Left="914" Source="platform2.png" Canvas.Top="657" Width="84" Stretch="Fill" Height="32"/>
             <Image Tag="platform" Height="32" Canvas.Left="950" Source="platform1.png" Stretch="Fill" Canvas.Top="657" Width="78"/>
             <Image Tag="platform" Canvas.Left="1028" Source="platform2.png" Canvas.Top="657" Width="84" Stretch="Fill" Height="32"/>
             <Image Tag="platform" Height="32" Canvas.Left="1134" Source="platform1.png" Stretch="Fill" Canvas.Top="596" Width="79"/>
             <Image Tag="platform" Canvas.Left="1213" Source="platform2.png" Canvas.Top="596" Width="83" Stretch="Fill" Height="32"/>
-            <Image Tag="platform" Height="32" Canvas.Left="872" Source="platform1.png" Stretch="Fill" Canvas.Top="256" Width="78"/>
-            <Image Tag="platform" Canvas.Left="950" Source="platform2.png" Canvas.Top="256" Width="84" Stretch="Fill" Height="32"/>
-            <Image Tag="platform" Height="32" Canvas.Left="1134" Source="platform1.png" Stretch="Fill" Canvas.Top="423" Width="79"/>
-            <Image Tag="platform" Canvas.Left="1213" Source="platform2.png" Canvas.Top="423" Width="83" Stretch="Fill" Height="32"/>
-            <Image Tag="platform" Height="32" Canvas.Left="1005" Source="platform1.png" Stretch="Fill" Canvas.Top="508" Width="79"/>
-            <Image Tag="platform" Canvas.Left="1084" Source="platform2.png" Canvas.Top="508" Width="83" Stretch="Fill" Height="32"/>
+            <Image Tag="platform" Height="32" Canvas.Left="755" Source="platform1.png" Stretch="Fill" Canvas.Top="246" Width="78"/>
+            <Image Tag="platform" Canvas.Left="833" Source="platform2.png" Canvas.Top="246" Width="84" Stretch="Fill" Height="32"/>
+            <Image Tag="platform" Height="32" Canvas.Left="1178" Source="platform1.png" Stretch="Fill" Canvas.Top="418" Width="79"/>
+            <Image Tag="platform" Canvas.Left="1254" Source="platform2.png" Canvas.Top="418" Width="84" Stretch="Fill" Height="32"/>
+            <Image Tag="platform" Height="32" Canvas.Left="1005" Source="platform1.png" Stretch="Fill" Canvas.Top="492" Width="79"/>
+            <Image Tag="platform" Canvas.Left="1084" Source="platform2.png" Canvas.Top="492" Width="83" Stretch="Fill" Height="32" RenderTransformOrigin="0.404,-0.455"/>
             <Image Height="151" Canvas.Left="817" Source="tree.png" Stretch="Fill" Canvas.Top="508" Width="128"/>
             <Image Height="75" Canvas.Left="174" Source="danger.png" Stretch="Fill" Canvas.Top="589" Width="67" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
@@ -75,7 +75,13 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image Name="player" Height="62" Canvas.Left="18" gif:ImageBehavior.AnimatedSource="player.gif" Stretch="Fill" Canvas.Top="544" Width="44"/>
+            <Image Name="player" Height="62" Canvas.Left="18" gif:ImageBehavior.AnimatedSource="player_run.gif" Stretch="Fill" Canvas.Top="544" Width="44"/>
+            <Image Tag ="coin" Height="56" Canvas.Left="590" gif:ImageBehavior.AnimatedSource="coin.gif" Stretch="Fill" Canvas.Top="352" Width="72"/>
+            <Image Tag ="coin" Height="56" Canvas.Left="626" gif:ImageBehavior.AnimatedSource="coin.gif" Stretch="Fill" Canvas.Top="352" Width="72"/>
+            <Image Tag ="coin" Height="56" Canvas.Left="956" gif:ImageBehavior.AnimatedSource="coin.gif" Stretch="Fill" Canvas.Top="603" Width="72"/>
+            <Image Tag ="coin" Height="56" Canvas.Left="992" gif:ImageBehavior.AnimatedSource="coin.gif" Stretch="Fill" Canvas.Top="603" Width="72"/>
+            <Image Tag ="coin" Height="56" Canvas.Left="1028" gif:ImageBehavior.AnimatedSource="coin.gif" Stretch="Fill" Canvas.Top="601" Width="72"/>
+            <Image Tag ="coin" Height="56" Canvas.Left="1040" gif:ImageBehavior.AnimatedSource="coin.gif" Stretch="Fill" Canvas.Top="436" Width="72"/>
 
         </Canvas>
 

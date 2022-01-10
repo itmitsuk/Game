@@ -145,5 +145,14 @@
   <ItemGroup>
     <Resource Include="player.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="player_idle.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="player_jump.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="player_run.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

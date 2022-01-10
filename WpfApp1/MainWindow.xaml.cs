@@ -5,22 +5,24 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
+
 namespace WpfApp1
 {
+
     public partial class MainWindow : Window
     {
-        bool goLeft = false; // boolean which will control players going left
-        bool goRight = false; // boolean which will control players going right
-        bool jumping = false; // boolean to check if player is jumping or not
-        bool hasKey = false; // default value of whether the player has the key
+        bool goLeft = false; //контроль шага влево
+        bool goRight = false; // контроль шага вправо
+        bool jumping = false; //контроль пражка
+        bool hasKey = false; //проверка на взятие ключа
         bool fall = false;
 
-        int jumpSpeed = 10; // integer to set jump speed
-        int force = 8; // force of the jump in an integer
-        int score = 0; // default score integer set to 0
-        int keys = 0; // default keys integer set to 0
+        int jumpSpeed = 10; //скорость прыжка
+        int force = 8; //сила прыжка
+        int score = 0; //начальное кол-во очков
+        int keys = 0; // начальное кол-во ключей
 
-        int playerSpeed = 11; //this integer will set players speed to 18
+        int playerSpeed = 11; //скорость персонажа
 
         DispatcherTimer gameTimer = new DispatcherTimer();
 
@@ -40,16 +42,13 @@ namespace WpfApp1
         {
             Canvas.SetTop(player, Canvas.GetTop(player) + jumpSpeed);
 
-            // if jumping is true and force is less than 0
-            // then change jumping to false
+            // условия для прыжка
             if (jumping && force < 0)
             {
                 jumping = false;
             }
 
-            // if jumping is true
-            // then change jump speed to -12 
-            // reduce force by 1
+            // если прыжок то уменьшаем скорость и силу
             if (jumping)
             {
                 jumpSpeed = -12;
@@ -57,28 +56,21 @@ namespace WpfApp1
             }
             else
             {
-                // else change the jump speed to 12
                 jumpSpeed = 12;
             }
 
-            // if go left is true and players left is greater than 100 pixels
-            // only then move player towards left of the 
+            // условия для шага влево
             if (goLeft && Canvas.GetLeft(player) > 25)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) - playerSpeed);
             }
-            // by doing the if statement above, the player picture will stop on the forms left
 
-
-            // if go right Boolean is true
-            // player left plus players width plus 100 is less than the forms width
-            // then we move the player towards the right by adding to the players left
+            // условие для шага вправо
             if (goRight && Canvas.GetLeft(player) + (player.Width + 25) < Application.Current.MainWindow.Width)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) + playerSpeed);
 
             }
-            // by doing the if statement above, the player picture will stop on the forms right
 
 
             Rect playerHitBox = new Rect(Canvas.GetLeft(player), Canvas.GetTop(player), player.Width, player.Height);
@@ -87,39 +79,35 @@ namespace WpfApp1
 
             foreach (Image k in children)
             {
-                // if the picture box found has a tag of coin
+                //если картинка - монета
                 if ((string)k.Tag == "coin")
                 {
                     Rect coinHitBox = new Rect(Canvas.GetLeft(k), Canvas.GetTop(k), k.Width, k.Height);
 
-                    // now if the player collides with the coin picture box
+                    // игрок взаимодейтсвует с монетой
                     if (playerHitBox.IntersectsWith(coinHitBox))
                     {
-                        myCanvas.Children.Remove(k); // then we are going to remove the coin image
-                        score++; // add 1 to the score
+                        myCanvas.Children.Remove(k); // убираем изображение
+                        score++; //добавляем счет
                         txtScore.Content = "Монеты: " + score;
                     }
                 }
             }
 
-            // below if the for loop thats checking for all of the controls in this form
             foreach (Image x in myCanvas.Children.OfType<Image>())
             {
-                
 
-                // is X is a picture box and it has a tag of platform
+                // если картинка - платформа
                 if ((string)x.Tag == "platform")
                 {
                     Rect platformHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
-                    // then we are checking if the player is colliding with the platform
-                    // and jumping is set to false
+                    // если игрок прыгает на платформу
                     if (playerHitBox.IntersectsWith(platformHitBox) && !jumping)
                     {
-                        // then we do the following
-                        force = 2; // set the force to 8
-                        Canvas.SetTop(player, Canvas.GetTop(x) - player.Height); // also we place the player on top of the picture box
-                        jumpSpeed = 0; // set the jump speed to 0
+                        force = 4;
+                        Canvas.SetTop(player, Canvas.GetTop(x) - player.Height); // ставим персонажа на платформу
+                        jumpSpeed = 0; // завершаем прыжок
                     }
 
                     if (playerHitBox.IntersectsWith(platformHitBox) == false)
@@ -133,79 +121,71 @@ namespace WpfApp1
                 }
             }
 
-            // if the player collides with the door and has key boolean is true
+            //если игрок взаимодействует с дверью и имеет ключ
             Rect doorHitBox = new Rect(Canvas.GetLeft(door), Canvas.GetTop(door), door.Width, door.Height);
 
             if (playerHitBox.IntersectsWith(doorHitBox) && hasKey)
             {
-                // then we change the image of the door to open
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!door.Image = Properties.Resources.door_open;
-                // and we stop the timer
+
+                // останавливаем таймер
                 gameTimer.Stop();
-                MessageBox.Show("Уровень пройден!"); // show the message box
+                MessageBox.Show("Уровень пройден!");
             }
 
-            // if the player collides with the key picture box
+            // если игрок взаимодействует с ключом
             Rect keyHitBox = new Rect(Canvas.GetLeft(key), Canvas.GetTop(key), key.Width, key.Height);
 
             if (playerHitBox.IntersectsWith(keyHitBox))
             {
-                // then we remove the key from the game
+                //удаляем ключ
                 myCanvas.Children.Remove(key);
                 keys = 1;
                 txtKey.Content = "Ключи: " + keys;
-                // change the has key boolean to true
                 hasKey = true;
             }
 
 
-            // this is where the player dies
-            // if the player goes below the forms height then we will end the game
+            // если игрок ниже высоты окна то конец игры
             if (Canvas.GetTop(player) + player.Height > Application.Current.MainWindow.Height + 60)
             {
-                gameTimer.Stop(); // stop the timer
-                MessageBox.Show("Игра закончена!"); // show the message box
+                gameTimer.Stop(); // остановка таймера
+                MessageBox.Show("Игра закончена!");
             }
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
-            //if the player pressed the left key AND the player is inside the panel
-            // then we set the car left boolean to true
+            //если нажимаем кнопка А то шагаем влево
             if (e.Key == Key.A)
             {
                 goLeft = true;
             }
-            // if player pressed the right key and the player left plus player width is less then the panel1 width          
-
+            // если нажимаем кнопка D то шаг вправо
             if (e.Key == Key.D)
             {
-                // then we set the player right to true
                 goRight = true;
             }
 
-            //if the player pressed the space key and jumping boolean is false
-            if (e.Key == Key.Space && !jumping && fall)
+            //если нажимаем кнопка W то прыжок
+            if (e.Key == Key.W && !jumping && fall)
             {
-                // then we set jumping to true
                 jumping = true;
             }
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
-            // if the LEFT key is up we set the car left to false
+            //если зажат кнопка А то перестаем шагать влево
             if (e.Key == Key.A)
             {
                 goLeft = false;
             }
-            // if the RIGHT key is up we set the car right to false
+            // если зажата кнопка D то перестаем шагать вправо
             if (e.Key == Key.D)
             {
                 goRight = false;
             }
-            //when the keys are released we check if jumping is true
-            // if so we need to set it back to false so the player can jump again
+            //если зажата кнопка W то перестаем прыгать
             if (jumping)
             {
                 jumping = false;
