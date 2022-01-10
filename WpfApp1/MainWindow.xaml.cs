@@ -105,7 +105,7 @@ namespace WpfApp1
                     // если игрок прыгает на платформу
                     if (playerHitBox.IntersectsWith(platformHitBox) && !jumping)
                     {
-                        force = 4;
+                        force = 5;
                         Canvas.SetTop(player, Canvas.GetTop(x) - player.Height); // ставим персонажа на платформу
                         jumpSpeed = 0; // завершаем прыжок
                     }

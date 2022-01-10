@@ -1,0 +1,25 @@
+﻿<Page x:Class="WpfApp1.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="Danger Adventure">
+
+    <Grid HorizontalAlignment="Center" x:Name="Elems" Height="1280" Width="720">
+
+        <Image x:Name="background"  Source="Background.png" Stretch="Fill" Margin="-276,0,-276,592"/>
+        <Image Margin="96,24,112,1117" Source="spreadsheet.png" Stretch="Fill"/>
+        <TextBlock TextWrapping="Wrap" Text="МЕНЮ" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.684,-4.337" Margin="213,40,218,0" Height="95" Width="289" FontWeight="ExtraBold" FontSize="80
+                   " Foreground="Black" FontFamily="Wide Latin"/>
+        <Button x:Name="ButtonPlay" Content="Играть" Click="ButtonClicked" FontSize="16" Background="White" FontFamily="Cascadia Mono" Margin="136,487,152,723"/>
+        <Button x:Name="ButtonExit" Content="Выход" Click="ButtonClose" Background="White" FontSize="16" FontFamily="Cascadia Mono" Margin="136,588,152,624"/>
+        <Image Margin="263,197,282,852" Source="player_idle.gif" Stretch="Fill"/>
+        <Image Margin="-256,243,759,592" Source="tree.png" Stretch="Fill"/>
+        <Image Margin="762,243,-257,592" Source="tree.png" Stretch="Fill"/>
+
+
+    </Grid>
+</Page> 

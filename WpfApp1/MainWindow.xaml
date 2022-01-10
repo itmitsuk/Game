@@ -6,7 +6,7 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="Danger Adventure" Height="720" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
